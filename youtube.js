@@ -1,6 +1,8 @@
 var $ = document.querySelector.bind(document);
-var songName = $('#eow-title').innerText;
-var formattedSongName = songName.replace(/\((\s|\S)*\)/, '');
+// var songName = ytplayer.config.args.title;
+// var songName = $('#container h1').innerText;
+var songName = document.title;
+var formattedSongName = songName.replace(/\((\s|\S)*\)|youtube/gi, '');
 
 geniusQuery(formattedSongName)
   .then(data => {
@@ -15,8 +17,12 @@ geniusQuery(formattedSongName)
       img.style = 'width: 100%';
       img.src = 'https://docs.genius.com/images/snarly_wordmark_hires.png';
 
+      testCors(result.result.url);
+
       anchor.appendChild(img);
-      $('#watch-headline-title').appendChild(anchor);
+      window.setTimeout(function () {
+        $('#primary #container').prepend(anchor);
+      }, 200);
     }
   })
 ;

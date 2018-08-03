@@ -3,10 +3,13 @@
   "name": "Genius Badge",
   "description": "Add a Genius badge to YouTube pages",
   "version": "1.0",
+  "permissions": [
+    "https://*.genius.com/"
+  ],
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
-      "js": ["genius-api.js", "youtube.js"]
+      "js": ["genius-api.js", "embedder.js", "youtube.js"]
     }
   ]
 }
