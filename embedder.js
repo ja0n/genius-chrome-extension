@@ -1,6 +1,15 @@
 const embedder = document.createElement('div');
-embedder.style = 'display: none; position: absolute; top: 50%; left: 50%; width: 20vw; height: 30vh; z-index: 100;';
-const iframe = document.createElement('iframe');
-embedder.append(iframe);
+embedder.style = `
+  /* display: flex; */
+  display: block;
+  position: fixed;
+  top: 56px;
+  right: 0;
+  width: 20vw;
+  height: 100vh;
+  background: white;
+  z-index: 100;
+  overflow-y: scroll;
+`;
 
 document.body.appendChild(embedder);

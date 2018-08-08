@@ -22,18 +22,22 @@ function geniusQuery (query) {
   ;
 }
 
-function testCors (url) {
+function fetchLyrics (url) {
   var headers = new Headers();
   headers.append("Origin", "https://genius.com");
   const config = { headers, mode: 'cors' };
-  fetch(url, config)
+
+  return fetch(url, config)
     .then(response => response.text())
     .then(text => {
       const div = document.createElement('div');
       div.innerHTML = text;
       const lyrics = div.querySelector('.lyrics');
+
+      if (embedder.firstChild)
+        embedder.firstChild.remove();
+
       embedder.appendChild(lyrics);
-      // embedder.firstChild.src = "data:text/html;charset=utf-8," + text;
       embedder.style.display = 'block';
     });
 }
